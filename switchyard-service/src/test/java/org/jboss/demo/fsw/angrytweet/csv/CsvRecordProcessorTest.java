@@ -12,7 +12,7 @@ public class CsvRecordProcessorTest {
     
     @Test
     public void testHandle() throws Exception {
-        String record = "'12345';'2014.01.21 12:08:56 CET';'CustomerCode';'tel';'comments';1";
+        String record = "'12345';'2014.01.21 11:08:56 GMT';'CustomerCode';'tel';'comments';1";
         
         CamelContext ctx = new DefaultCamelContext();
         Exchange exchange = new DefaultExchange(ctx);
@@ -31,7 +31,7 @@ public class CsvRecordProcessorTest {
         Assert.assertEquals("comments", ticket.getComments());
         Assert.assertEquals("Helpdesk", ticket.getChannelIn());
         Assert.assertNotNull(ticket.getSubmitted());
-        Assert.assertEquals("Tue Jan 21 12:08:56 CET 2014", ticket.getSubmitted().toString());
+	Assert.assertEquals("Tue Jan 21 11:08:56 GMT 2014", ticket.getSubmitted().toString());
     }
 
 }
